@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Şampiyonluk Hesabı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🏁 Şampiyonluk Hesabı</h1>
+    <p>Kim hâlâ şampiyon olabilir? Lider bu yarışta neyle garantiler? Puan tablosunu yaz, hesabı ben yapayım.</p>
+  </header>
+
+  <main>
+    <section class="sol">
+      <div class="kart">
+        <h2>Lig ayarları</h2>
+        <div class="ayarlar">
+          <label>Puan sistemi
+            <select id="sistem">
+              <option value="f1">Formula 1</option>
+              <option value="motogp">MotoGP</option>
+              <option value="ozel">Kendi ligim</option>
+            </select>
+          </label>
+          <label>Kalan yarış <input id="kalanYaris" type="number" min="0" max="60" step="1"></label>
+          <label>Kalan sprint <input id="kalanSprint" type="number" min="0" max="60" step="1"></label>
+          <label>Yapılan yarış <input id="yapilanYaris" type="number" min="1" max="200" step="1"></label>
+          <label class="ozel">Yarış puanları <input id="ozelYaris" placeholder="10, 8, 6, 5, 4, 3, 2, 1"></label>
+          <label class="ozel">Sprint puanları <input id="ozelSprint" placeholder="boş bırakabilirim"></label>
+        </div>
+        <p class="not" id="sistemYazi"></p>
+      </div>
+
+      <div class="kart">
+        <h2>Puan tablosu</h2>
+        <table class="girdi">
+          <thead><tr><th>Ad</th><th>Puan</th><th>Galibiyet</th><th></th></tr></thead>
+          <tbody id="girdi"></tbody>
+        </table>
+        <button type="button" id="ekle" class="ikinci">+ Sürücü ekle</button>
+      </div>
+
+      <div class="kart islemler">
+        <button type="button" id="ornek" class="ikinci">Örnek koy</button>
+        <button type="button" id="yedekAl" class="ikinci">Yedek al</button>
+        <label class="ikinci dugme">Yedek yükle<input id="yedekYukle" type="file" accept="application/json,.json"></label>
+        <button type="button" id="sifirla" class="ikinci tehlike">Tabloyu sil</button>
+        <p class="not" id="islemYazi">Her şey sadece bu tarayıcıda duruyor.</p>
+      </div>
+    </section>
+
+    <section class="sag">
+      <div class="kart">
+        <h2>Kim hâlâ şampiyon olabilir?</h2>
+        <p class="ozet" id="ozet"></p>
+        <div id="tablo" class="tablo"></div>
+        <div class="lejant"><span><b class="simdi"></b>şimdiki puan</span><span><b class="olasi"></b>hepsini kazanırsa</span><span><b class="cizgi"></b>liderin puanı</span></div>
+      </div>
+
+      <div class="kart">
+        <div class="baslik-satir">
+          <h2 id="garantiBaslik">Lider bu yarışta neyle garantiler?</h2>
+          <div class="sekme" role="group" aria-label="Yarış türü">
+            <button type="button" data-tur="yaris" class="secili">Yarış</button>
+            <button type="button" data-tur="sprint">Sprint</button>
+          </div>
+        </div>
+        <ol id="garanti" class="garanti"></ol>
+      </div>
+
+      <div class="kart">
+        <div class="baslik-satir">
+          <h2>Şampiyonluk ihtimali</h2>
+          <button type="button" id="tekrar" class="ikinci kucuk">🎲 Yeniden</button>
+        </div>
+        <div id="sim" class="sim"></div>
+        <p class="not">Kalan yarışları 5.000 kez rastgele oynattım. Şimdiye kadar yarış başına çok puan alan, önde bitmeye daha yatkın. Bu bir tahmin, kesin hesap değil.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
